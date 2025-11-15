@@ -57,6 +57,4 @@ hono.route("/bing", bing);
 hono.route("/kirby", kirby);
 hono.route("/spotlight", spotlight);
 
-console.log("Listening on port 8000");
-
 export default hono;
