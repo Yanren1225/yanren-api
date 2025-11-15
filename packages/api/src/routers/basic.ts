@@ -1,11 +1,11 @@
-import { Hono } from '$hono/mod.ts'
+import { Hono } from "hono";
 
-const basic = new Hono()
+const basic = new Hono();
 
-basic.get('/ip', (c) => {
+basic.get("/ip", (c) => {
   return c.json({
-    ip: c.req.header('x-forwarded-for'),
-  })
-})
+    ip: c.req.header("x-forwarded-for"),
+  });
+});
 
-export { basic }
+export { basic };

@@ -1,40 +1,62 @@
-import { Hono } from '$hono/mod.ts'
-import { cors, logger, poweredBy, prettyJSON } from '$hono/middleware.ts'
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { logger } from "hono/logger";
+import { poweredBy } from "hono/powered-by";
+import { fail, success } from "./response/base-result";
+import { BaseResultCode } from "./response/code";
+import { basic } from "./routers/basic";
+import { bing } from "./routers/bing";
+import { kirby } from "./routers/kirby";
+import { sms } from "./routers/sms";
+import { spotlight } from "./routers/spotlight";
 
-import { kirby } from '@/routers/kirby.ts'
-import { bing } from '@/routers/bing.ts'
-import { basic } from '@/routers/basic.ts'
-import { sms } from '@/routers/sms.ts'
-import { spotlight } from '@/routers/spotlight.ts'
-import { fail } from '@/response/base-result.ts'
-import { BaseResultCode } from '@/response/code.ts'
+const hono = new Hono();
 
-const hono = new Hono()
-
-hono.use('*', poweredBy())
+hono.use("*", poweredBy());
 
 // Logger
-hono.use('*', logger())
+hono.use("*", logger());
 
-hono.use('*', cors())
-hono.use('*', prettyJSON())
+hono.use("*", cors());
 
-hono.all('/', (c) => {
-  return c.redirect('https://doc.deno-api.imyan.ren')
-})
+hono.all("/", (c) => {
+  const userAgent = c.req.header("User-Agent") || "";
+
+  // 检查是否为浏览器访问
+  const isBrowser = /Mozilla|Chrome|Safari|Firefox|Edge|Opera/i.test(userAgent);
+
+  if (isBrowser) {
+    return c.redirect("https://doc.deno-api.imyan.ren");
+  } else {
+    return c.json(
+      success(
+        "Welcome to Yanren API Service, see https://doc.deno-api.imyan.ren for more information."
+      )
+    );
+  }
+});
+
+hono.onError((err, c) => {
+  console.error("Error:", err);
+  return c.json(
+    fail(null, BaseResultCode.FAIL, err.message || "Internal Server Error"),
+    500
+  );
+});
 
 // 404
 hono.notFound((c) => {
-  const path = c.req.path
-  return c.json(fail(`Not Found ${path}`, BaseResultCode.NOT_FOUND))
-})
+  const path = c.req.path;
+  return c.json(fail(`Not Found ${path}`, BaseResultCode.NOT_FOUND));
+});
 
-hono.route('/', basic)
+hono.route("/", basic);
 
-hono.route('/sms', sms)
-hono.route('/bing', bing)
-hono.route('/kirby', kirby)
-hono.route('/spotlight', spotlight)
+hono.route("/sms", sms);
+hono.route("/bing", bing);
+hono.route("/kirby", kirby);
+hono.route("/spotlight", spotlight);
 
-Deno.serve({ port: 8000 }, hono.fetch)
-console.log('Listening on port 8000')
+console.log("Listening on port 8000");
+
+export default hono;
