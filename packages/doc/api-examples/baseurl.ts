@@ -1,1 +1,1 @@
-export const baseUrl = "https://deno-api.imyan.ren";
+export const baseUrl = "https://api.imyan.ren";

@@ -26,11 +26,11 @@ hono.all("/", (c) => {
   const isBrowser = /Mozilla|Chrome|Safari|Firefox|Edge|Opera/i.test(userAgent);
 
   if (isBrowser) {
-    return c.redirect("https://doc.deno-api.imyan.ren");
+    return c.redirect("https://doc.api.imyan.ren");
   } else {
     return c.json(
       success(
-        "Welcome to Yanren API Service, see https://doc.deno-api.imyan.ren for more information."
+        "Welcome to Yanren API Service, see https://doc.api.imyan.ren for more information."
       )
     );
   }

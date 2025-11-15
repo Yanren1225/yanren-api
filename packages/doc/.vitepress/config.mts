@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Yanren Deno Api Doc",
+  title: "Yanren Api Doc",
   description: "A VitePress Site",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -39,7 +39,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/Yanren1225/yanren-deno-api" },
+      { icon: "github", link: "https://github.com/Yanren1225/yanren-api" },
     ],
   },
 });

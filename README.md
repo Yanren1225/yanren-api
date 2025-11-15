@@ -1,3 +1,3 @@
-# Yanren Deno API
+# Yanren API
 
-[Doc](https://doc.deno-api.imyan.ren/)
+[Doc](https://doc.api.imyan.ren/)

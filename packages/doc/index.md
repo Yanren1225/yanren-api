@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "Yanren Deno Api Doc"
-  tagline: 骄傲的使用 deno 驱动
+  name: "Yanren Api Doc"
+  tagline: 骄傲的使用 Cloudflare Workers 驱动
   actions:
     - theme: brand
       text: API 示例
@@ -14,8 +14,8 @@ hero:
       link: https://imyan.ren/
 
 features:
-  - title: Deno
-    details: 使用 Deno 平台快速驱动
+  - title: Cloudflare Workers
+    details: 骄傲的使用 Cloudflare Workers 驱动
   - title: 放两个比较好看
     details: 确实
 #   - title: Feature C

@@ -4,7 +4,7 @@ import { baseUrl } from './baseurl'
 
 # API 说明
 
-baseUrl 是 `{{ baseUrl }}`，部署在 [Deno Deploy](https://deno.com/deploy)
+baseUrl 是 `{{ baseUrl }}`，部署在 [Cloudflare Workers](https://workers.cloudflare.com/)
 
 基本的返回值类型是
 

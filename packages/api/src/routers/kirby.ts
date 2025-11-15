@@ -7,14 +7,6 @@ type Variables = {
 
 const kirby = new Hono<{ Variables: Variables }>();
 
-// kirby.use('*', async (c, next) => {
-//   // deno-lint-ignore require-await
-//   c.set('success', async (data: string) => {
-//     return c.json(data, 200)
-//   })
-//   await next()
-// })
-
 kirby.get("/", (c) => {
   return c.json(success("Kirby"));
 });

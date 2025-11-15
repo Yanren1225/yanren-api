@@ -13,7 +13,5 @@
       "path": "./packages/doc"
     }
   ],
-  "settings": {
-    "deno.config": "./packages/api/deno.json"
-  }
+  "settings": {}
 }
