@@ -4,7 +4,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "yanren-api-worker",
+	"name": "yanren-api",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-11-15",
 	"observability": {
